@@ -1,7 +1,6 @@
 import { Field, Formik } from "formik"
 import { useCallback } from "react"
 import * as yup from "yup"
-import axios from "axios"
 
 import Button from "../src/components/Button"
 import FormField from "../src/components/FormField"
@@ -20,10 +19,9 @@ const MerchandiseNewPage = () => {
     longueur: "",
     largeur: "",        
   }
-  const handleFormSubmit = async (values) =>{
-    const { data } = await axios.post("http://localhost:4000/saisie", {id_materiau: values.id_materiau, longueur: values.longueur, largeur: values.largeur});
-    console.log("RETURN", data);
-  };
+  const handleFormSubmit = useCallback((values) => {
+    console.log(values)
+  }, [])
 
   return (
     <Page2>
